@@ -102,6 +102,7 @@ public class Basket {
             System.out.println(items);
             System.out.println(totalPrice + "- общая стоимость товаров в корзине");
             System.out.println(getTotalWeight() + "- общий вес товаров в корзине");
+            System.out.println(getCount() + "- общее количество товаров в корзине");
         }
     }
 }
