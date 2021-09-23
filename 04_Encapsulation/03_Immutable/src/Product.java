@@ -1,11 +1,18 @@
 public class Product {
     private final String name;
-    private int price;
-    private final int barCode;
+    private final int price;
 
-    public Product(String name, int barCode) {
+    public Product(String name, int price) {
         this.name = name;
-        this.barCode = barCode;
+        this.price = price;
+    }
+
+    public Product setPrice(int price) {
+        return new Product(name, price);
+    }
+
+    public Product setName(String name) {
+        return new Product(name, price);
     }
 
     public String getName() {
@@ -16,7 +23,12 @@ public class Product {
         return price;
     }
 
-    public int getBarCode() {
-        return barCode;
+    public String toString() {
+        return name + "-" + price;
     }
+
+    public void print() {
+
+    }
+
 }
