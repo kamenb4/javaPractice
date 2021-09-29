@@ -12,14 +12,23 @@ public class Storage {
         this.weight = weight;
     }
 
+
+    public StorageType getType() {
+        return type;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
     public int getWeight() {
         return weight;
     }
 
     public String toString() {
-        return "Тип накопителя: " + type + "\n"
-                + "Объем памяти: " + capacity + "\n"
-                + "Вес: " + weight;
+        return "Тип накопителя - " + type + "\n"
+                + "Объем памяти - " + capacity + "Gb" + "\n"
+                + "Вес - " + weight + "грамм" + "\n";
     }
 
 }

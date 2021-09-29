@@ -12,13 +12,21 @@ public class Screen {
         this.weight = weight;
     }
 
+    public int getDiagonal() {
+        return diagonal;
+    }
+
+    public ScreenType getType() {
+        return type;
+    }
+
     public int getWeight() {
         return weight;
     }
 
     public String toString() {
-        return "Диагональ: " + diagonal + "\n"
-                + "Тип экрана: " + type + "\n"
-                + "Вес: " + weight;
+        return "Диагональ - " + diagonal + "\n"
+                + "Тип экрана - " + type + "\n"
+                + "Вес - " + weight + "грамм" + "\n";
     }
 }

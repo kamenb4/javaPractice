@@ -2,27 +2,26 @@ package ru.skillbox;
 
 public class Computer {
 
-    public final String processor;
-    public final String ram;
-    public final String storage;
-    public final String screen;
-    public final String keyboard;
-    public final String vendor;
-    public final String name;
+    private final Processor processor;
+    private final RAM ram;
+    private final Storage storage;
+    private final Screen screen;
+    private final Keyboard keyboard;
+    private final String vendor;
+    private final String name;
 
 
-    public static int calcWeight() {
-        Processor proc = new Processor(64,2, "Intel", 200);
-        RAM ram = new RAM("DDR4", 4, 50);
-        Storage stor = new Storage(StorageType.SSD, 128, 400);
-        Screen scr = new Screen(21, ScreenType.IPS, 900);
-        Keyboard key = new Keyboard("Mech", "Yes", 500);
-        return proc.getWeight() + ram.getWeight() + stor.getWeight() + scr.getWeight() + key.getWeight();
+    public int calcWeight() {
+        return processor.getWeight()
+                + storage.getWeight()
+                + keyboard.getWeight()
+                + ram.getWeight()
+                + screen.getWeight();
     }
 
 
-    public Computer(String processor, String ram, String storage,
-                    String screen, String keyboard, String vendor, String name) {
+    public Computer(Processor processor, RAM ram, Storage storage,
+                    Screen screen, Keyboard keyboard, String vendor, String name) {
         this.processor = processor;
         this.ram = ram;
         this.storage = storage;
@@ -32,23 +31,23 @@ public class Computer {
         this.name = name;
     }
 
-    public Computer setProcessor(String processor) {
+    public Computer setProcessor(Processor processor) {
         return new Computer(processor, ram, storage, screen, keyboard, vendor, name);
     }
 
-    public Computer setRam(String ram) {
+    public Computer setRam(RAM ram) {
         return new Computer(processor, ram, storage, screen, keyboard, vendor, name);
     }
 
-    public Computer setStorage(String storage) {
+    public Computer setStorage(Storage storage) {
         return new Computer(processor, ram, storage, screen, keyboard, vendor, name);
     }
 
-    public Computer setScreen(String screen) {
+    public Computer setScreen(Screen screen) {
         return new Computer(processor, ram, storage, screen, keyboard, vendor, name);
     }
 
-    public Computer setKeyboard(String keyboard) {
+    public Computer setKeyboard(Keyboard keyboard) {
         return new Computer(processor, ram, storage, screen, keyboard, vendor, name);
     }
 
@@ -60,23 +59,23 @@ public class Computer {
         return new Computer(processor, ram, storage, screen, keyboard, vendor, name);
     }
 
-    public String getProcessor() {
+    public Processor getProcessor() {
         return processor;
     }
 
-    public String getRam() {
+    public RAM getRam() {
         return ram;
     }
 
-    public String getStorage() {
+    public Storage getStorage() {
         return storage;
     }
 
-    public String getScreen() {
+    public Screen getScreen() {
         return screen;
     }
 
-    public String getKeyboard() {
+    public Keyboard getKeyboard() {
         return keyboard;
     }
 
@@ -88,14 +87,15 @@ public class Computer {
         return name;
     }
 
+
     public String toString() {
-        return "Процессор: " + processor + "\n"
-                + "Оперативная память: " + ram + "\n"
-                + "Накопитель: " + storage + "\n"
-                + "Экран: " + screen + "\n"
-                + "Клавиатура: " + keyboard + "\n"
+        return "Процессор: " + "\n" + processor + "\n"
+                + "Оперативная память: " + "\n" + ram + "\n"
+                + "Накопитель: " + "\n" + storage + "\n"
+                + "Экран: " + "\n" + screen + "\n"
+                + "Клавиатура: " + "\n" + keyboard + "\n"
                 + "Произовдитель: " + vendor + "\n"
                 + "Название: " + name + "\n"
-                + "Общий вес компьютера: " + calcWeight();
+                + "Общий вес компьютера: " + calcWeight() + " грамм";
     }
 }

@@ -12,13 +12,21 @@ public class RAM {
         this.weight = weight;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
     public int getWeight() {
         return weight;
     }
 
     public String toString() {
-        return "Тип: " + type + "\n"
-                + "Объем: " + capacity + "\n"
-                + "Вес: " + weight;
+        return "Тип - " + type + "\n"
+                + "Объем - " + capacity + "Gb" + "\n"
+                + "Вес - " + weight + "грамм" + "\n";
     }
 }

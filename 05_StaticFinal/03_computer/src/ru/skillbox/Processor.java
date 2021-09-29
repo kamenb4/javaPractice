@@ -14,14 +14,26 @@ public class Processor {
         this.weight = weight;
     }
 
+    public int getFrequency() {
+        return frequency;
+    }
+
+    public int getNumberOfCores() {
+        return numberOfCores;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
     public int getWeight() {
         return weight;
     }
 
     public String toString() {
-        return "Частота: " + frequency +"\n"
-                + "Количество ядер: " + numberOfCores + "\n"
-                + "Производитель процессора: " + creator + "\n"
-                + "Вес: " + weight;
+        return "Частота - " + frequency + "GHZ" + "\n"
+                + "Количество ядер - " + numberOfCores + "\n"
+                + "Производитель процессора - " + creator + "\n"
+                + "Вес - " + weight + "грамм" + "\n";
     }
 }
