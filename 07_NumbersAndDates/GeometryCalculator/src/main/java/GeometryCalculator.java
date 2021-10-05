@@ -1,3 +1,4 @@
+
 public class GeometryCalculator {
     // метод должен использовать абсолютное значение radius
     public static double getCircleSquare(double radius) {
