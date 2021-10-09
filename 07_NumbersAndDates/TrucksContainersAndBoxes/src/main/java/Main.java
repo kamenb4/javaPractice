@@ -2,14 +2,16 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static final int BOX_IN_CONTAINER = 27;
+    public static final int CONTAINER_IN_TRUCK = 12;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String boxes = scanner.nextLine();
 
         int trucks = 0;
         int container = 0;
-        int boxInContainer = 27;
-        int containerInTruck = 12;
+
         int box = Integer.parseInt(boxes);
 
         if(box > 0){
@@ -19,12 +21,12 @@ public class Main {
             System.out.println("\tКонтейнер: " + container);
             for(int i = 1; i <= box; i++) {
                 System.out.println("\t\tЯщик: " + i);
-                if(i % (boxInContainer * containerInTruck) == 0) {
+                if(i % (BOX_IN_CONTAINER * CONTAINER_IN_TRUCK) == 0) {
                     trucks += 1;
                     container += 1;
                     System.out.println("Грузовик: " + trucks);
                     System.out.println("\tКонтейнер: " + container);
-                } else if (i % boxInContainer == 0 && box > boxInContainer) {
+                } else if (i % BOX_IN_CONTAINER == 0 && box > BOX_IN_CONTAINER) {
                     container += 1;
                     System.out.println("\tКонтейнер: " + container);
                 }
