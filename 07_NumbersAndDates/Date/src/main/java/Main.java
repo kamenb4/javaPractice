@@ -23,13 +23,10 @@ public class Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(" - " + "dd.MM.yyyy" + " - E", Locale.ENGLISH);
         String text = "";
 
-        for(int i = 0; ; i++) {
+        for(int i = 0; !birthday.isAfter(today); i++) {
             if (birthday.isBefore(today) || birthday.isEqual(today)) {
-                text = i + formatter.format(birthday) + "\n";
-                System.out.println(text);
+                text += i + formatter.format(birthday) + "\n";
                 birthday = birthday.plusYears(1);
-            } else if (birthday.isAfter(today)) {
-                break;
             }
         }
 

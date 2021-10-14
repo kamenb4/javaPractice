@@ -7,7 +7,7 @@ public class Main {
 
 
   public static void main(String[] args) {
-    getPeriodFromBirthday(LocalDate.of(1996,1,26));
+    System.out.println(getPeriodFromBirthday(LocalDate.of(1996, 1, 26)));
   }
 
   private static String getPeriodFromBirthday(LocalDate birthday) {
@@ -16,9 +16,10 @@ public class Main {
     LocalDate today = LocalDate.now();
 
     if(birthday.isBefore(today)) {
-      formatDate = formatDate + Period.between(birthday, today).getYears() + " years, "
-              + Period.between(birthday, today).getMonths() + " months, "
-              + Period.between(birthday, today).getDays() + " days.";
+      int years = Period.between(birthday, today).getYears();
+      int months = Period.between(birthday, today).getMonths();
+      int days = Period.between(birthday, today).getDays();
+      formatDate = formatDate + years + " years, " + months + " months, " + days + " days.";
     }
     return formatDate;
   }
