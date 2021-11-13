@@ -13,6 +13,7 @@ public class Main {
 
       int spaceCount = 0;
       for(char ch : input.toCharArray()) {
+
         if(ch == ' ') {
           spaceCount++;
         }
@@ -22,10 +23,9 @@ public class Main {
 
       char c = input.charAt(i);
 
-      if(Character.isDigit(c)) {
+      if(Character.isDigit(c) || Character.isLowerCase(c)) {
         System.out.println("Введенная строка не является ФИО");
         return;
-
       } else if ((spaceCount == 2) && (flag1 != -1 && flag2 != -1)) {
         encoding1 = input.substring(0, flag1);
         encoding2 = input.substring(flag1, flag2);
