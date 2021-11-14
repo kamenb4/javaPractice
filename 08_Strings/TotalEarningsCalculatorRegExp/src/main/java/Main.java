@@ -8,10 +8,14 @@ public class Main {
   }
 
   public static int calculateSalarySum(String text){
-
-
+    int sum = 0;
+    Pattern pattern = Pattern.compile("\\d+");
+    Matcher matcher = pattern.matcher(text);
+    while (matcher.find()) {
+      sum += Integer.parseInt(text.substring(matcher.start(), matcher.end()));
+    }
     //TODO: реализуйте метод
-    return 0;
+    return sum;
   }
 
 }
