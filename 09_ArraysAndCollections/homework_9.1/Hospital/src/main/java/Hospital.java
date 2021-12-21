@@ -1,36 +1,42 @@
-import java.util.Arrays;
+import java.text.DecimalFormat;
+
 public class Hospital {
 
+    static String str = "";
+    static int count = 0;
     public static float[] generatePatientsTemperatures(int patientsCount) {
 
         //TODO: напишите метод генерации массива температур пациентов
         float[] patientsTemperature = new float[patientsCount];
         for(int i = 0; i < patientsTemperature.length; i++) {
-            patientsTemperature[i] = (float) (Math.round(((float) (Math.random() * 8) + 32) * 10.0) / 10.0);
+            patientsTemperature[i] = (float) (Math.round(( (Math.random() * 8) + 32.0F) * 10.0) / 10.0);
+            if (patientsTemperature[i] >= 36.2 && patientsTemperature[i] <= 36.9) {
+                count++;
+            }
+            str += patientsTemperature[i] + " ";
         }
         return patientsTemperature;
     }
 
     public static String getReport(float[] temperatureData) {
-        temperatureData = generatePatientsTemperatures(30);
+        float average = 0.0F;
+        for (int i = 0; i < temperatureData.length; i++) {
+            average += temperatureData[i];
+        }
 
-        String temp = Arrays.toString(temperatureData);
-        temp += temp.trim();
+        String formattedAverage = new DecimalFormat("#0.00").format
+                (((average/ temperatureData.length) * 100.0) / 100.0);
         /*
         TODO: Напишите код, который выводит среднюю температуру по больнице,количество здоровых пациентов,
             а также температуры всех пациентов.
         */
-        int count = 0;
-        for (int i = 0; i < temperatureData.length; i++) {
-            if (temperatureData[i] > 32.0 && temperatureData[i] < 40.0) {
-                count++;
-            }
-        }
+
+
 
 
         String report =
-                "Температуры пациентов: " + temp +
-                        "\nСредняя температура: " + 0 +
+                "Температуры пациентов: " + str.trim() +
+                        "\nСредняя температура: " + formattedAverage +
                         "\nКоличество здоровых: " + count;
 
         return report;
