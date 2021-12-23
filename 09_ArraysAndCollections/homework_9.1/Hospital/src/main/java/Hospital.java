@@ -2,26 +2,29 @@ import java.text.DecimalFormat;
 
 public class Hospital {
 
-    static String str = "";
-    static int count = 0;
+
+
     public static float[] generatePatientsTemperatures(int patientsCount) {
 
         //TODO: напишите метод генерации массива температур пациентов
         float[] patientsTemperature = new float[patientsCount];
         for(int i = 0; i < patientsTemperature.length; i++) {
             patientsTemperature[i] = (float) (Math.round(( (Math.random() * 8) + 32.0F) * 10.0) / 10.0);
-            if (patientsTemperature[i] >= 36.2 && patientsTemperature[i] <= 36.9) {
-                count++;
-            }
-            str += patientsTemperature[i] + " ";
+
         }
         return patientsTemperature;
     }
 
     public static String getReport(float[] temperatureData) {
+        String str = "";
+        int count = 0;
         float average = 0.0F;
         for (int i = 0; i < temperatureData.length; i++) {
             average += temperatureData[i];
+            str += temperatureData[i] + " ";
+            if (temperatureData[i] >= 36.2F && temperatureData[i] <= 36.9F) {
+                count++;
+            }
         }
 
         String formattedAverage = new DecimalFormat("#0.00").format
