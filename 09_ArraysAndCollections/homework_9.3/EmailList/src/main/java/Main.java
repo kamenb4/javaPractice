@@ -19,9 +19,17 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
+        EmailList list = new EmailList();
         while (true) {
             String input = scanner.nextLine();
+
+            if (input.startsWith("ADD")) {
+                list.add(input.substring(4));
+            } else if (input.startsWith("LIST")) {
+                for (int i = 0; i < list.getSortedEmails().size(); i++) {
+                    System.out.println(list.getSortedEmails().get(i));
+                }
+            }
             if (input.equals("0")) {
                 break;
             }
