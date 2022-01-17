@@ -10,10 +10,12 @@ public class EmailList {
         Pattern pattern = Pattern.compile("([A-Za-z0-9]+[\\\\-]?[A-Za-z0-9]+[\\\\.]?[A-Za-z0-9]+)+@([A-Za-z0-9]+[\\\\-]?[A-Za-z0-9]+[\\\\.]?[A-Za-z0-9]+)+[\\\\.][A-Za-z]{2,4}");
         Matcher matcher = pattern.matcher(email);
 
-        if (matcher.matches()) {
+        if (matcher.matches() && !(mail.contains(email))) {
             mail.add(email.toLowerCase());
             System.out.println("Email успешно добавлен");
-        } else System.out.println(Main.WRONG_EMAIL_ANSWER);
+        } else if (mail.contains(email)) {
+            System.out.println("Такой email уже существует, введите другой");
+        } else System.out.println(Main.WRONG_EMAIL_ANSWER);;
 
         // TODO: валидный формат email добавляется
     }
