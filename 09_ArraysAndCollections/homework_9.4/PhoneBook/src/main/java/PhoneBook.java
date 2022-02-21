@@ -61,15 +61,25 @@ public class PhoneBook {
         // формат одного контакта "Имя - Телефон"
         Set<String> result = new TreeSet<>();
         for (Map.Entry<String, String> entry : list.entrySet()) {
-            String key = entry.getKey();
             String value = entry.getValue();
-            result.add(value + " - " + key);
+            result.add(getContactString(value));
         }
 //        for(String keys : list.keySet()) {
 //            result.add(list.get(keys) + " - " + keys);
 //        }
         // если контактов нет в телефонной книге - вернуть пустой TreeSet
         return result;
+    }
+
+    private String getContactString(String name) {
+        String contact = name.concat(" - ");
+        for (String key : list.keySet()) {
+            String value = list.get(key);
+            if (value.equals(name)) {
+                contact = contact.concat(key).concat(", ");
+            }
+        }
+        return contact.substring(0, contact.length() - 2);
     }
 
 
