@@ -84,10 +84,8 @@ public class CoolNumbers {
     public static boolean bruteForceSearchInList(List<String> list, String number) {
             for (String num : list) {
                 if (number.equals(num)) {
-                    System.out.println("Номер есть в списке");
                     return true;
                 } else {
-                    System.out.println("Номера нет в спике");
                     return false;
                 }
             }
@@ -98,10 +96,8 @@ public class CoolNumbers {
         Collections.sort(sortedList);
         int index = Collections.binarySearch(sortedList, number);
         if (index >= 0) {
-            System.out.println("Номер найден");
             return true;
         } else{
-            System.out.println("Номер не найден");
             return false;
         }
     }
@@ -111,14 +107,11 @@ public class CoolNumbers {
         for (String hash : hashSet) {
             if (hash.hashCode() == number.hashCode()) {
                 if (hash.equals(number)) {
-                    System.out.println("Номер есть в списке");
                     return true;
                 } else {
-                    System.out.println("Номера нет в списке");
                     return false;
                 }
             } else{
-                System.out.println("Номера нет в списке");
                 return false;
             }
         }
@@ -127,10 +120,8 @@ public class CoolNumbers {
 
     public static boolean searchInTreeSet(TreeSet<String> treeSet, String number) {
         if (treeSet.contains(number)) {
-            System.out.println("Номер есть в списке");
             return true;
         } else {
-            System.out.println("Номера нет в списке");
             return false;
         }
     }
