@@ -13,39 +13,69 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        List<String> numbers = CoolNumbers.generateCoolNumbers();
+
         System.out.println("Выберите параметры поиска автомобильного номера: " + "\n"
                 + "1.Бинарный поиск" + "\n"
                 + "2.Поиск прямым перебором" + "\n"
                 + "3.Поиск в TreeSet" + "\n"
                 + "4.Поиск в HashSet");
+
         String input = scanner.nextLine();
-        List<String> numbers = CoolNumbers.generateCoolNumbers();
+
+        //Бинарный поиск
         if (input.startsWith("1") || input.startsWith("Бинарный поиск")) {
             System.out.println("Введите номер для поиска: ");
             String binary = scanner.nextLine();
+            long time = System.nanoTime();
+
             if (CoolNumbers.binarySearchInList(numbers, binary)) {
-                System.out.println("Номер " + binary + " найден.");
-            }
+                time = System.nanoTime() - time;
+                System.out.println("Номер " + binary + " найден." + "\n"
+                + " Это заняло нс:" + time);
+            } else System.out.println("Данный номер не найден." + "\n"
+                    + " Это заняло нс:" + time);
+
+            //Прямой перебор
         } else if (input.startsWith("2") || input.startsWith("Поиск прямым перебором")) {
             System.out.println("Введите номер для поиска: ");
             String brute = scanner.nextLine();
+            long time = System.nanoTime();
+
             if (CoolNumbers.bruteForceSearchInList(numbers, brute)) {
-                System.out.println("Номер " + brute + " найден.");
-            }
+                time = System.nanoTime() - time;
+                System.out.println("Номер " + brute + " найден." + "\n"
+                        + " Это заняло нс:" + time);
+            } else System.out.println("Данный номер не найден." + "\n"
+                    + " Это заняло нс:" + time);
+
+            //Поиск в TreeSet
         } else if (input.startsWith("3") || input.startsWith("Поиск в TreeSet")) {
             TreeSet<String> searchTree = new TreeSet<>(numbers);
             System.out.println("Введите номер для поиска: ");
             String searchTreeSet = scanner.nextLine();
+            long time = System.nanoTime();
+
             if (CoolNumbers.searchInTreeSet(searchTree, searchTreeSet)) {
-                System.out.println("Номер " + searchTreeSet + " найден.");
-            }
+                time = System.nanoTime() - time;
+                System.out.println("Номер " + searchTreeSet + " найден."  + "\n"
+                        + " Это заняло нс:" + time);
+            } else System.out.println("Данный номер не найден."  + "\n"
+                    + " Это заняло нс:" + time);
+
+            //Поиск в HashSet
         } else if (input.startsWith("4") || input.startsWith("Поиск в HashSet")) {
             HashSet<String> searchHash = new HashSet<>(numbers);
             System.out.println("Введите номер для поиска: ");
             String searchHashSet = scanner.nextLine();
+            long time = System.nanoTime();
+
             if (CoolNumbers.searchInHashSet(searchHash, searchHashSet)) {
-                System.out.println("Номер " + searchHashSet + " найден.");
-            } else System.out.println("Данный номер не найден.");
+                time = System.nanoTime() - time;
+                System.out.println("Номер " + searchHashSet + " найден."  + "\n"
+                        + " Это заняло нс:" + time);
+            } else System.out.println("Данный номер не найден."  + "\n"
+                    + " Это заняло нс:" + time);
 
         }
     }
