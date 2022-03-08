@@ -85,8 +85,6 @@ public class CoolNumbers {
             for (String num : list) {
                 if (number.equals(num)) {
                     return true;
-                } else {
-                    return false;
                 }
             }
         return false;
@@ -108,11 +106,7 @@ public class CoolNumbers {
             if (hash.hashCode() == number.hashCode()) {
                 if (hash.equals(number)) {
                     return true;
-                } else {
-                    return false;
                 }
-            } else{
-                return false;
             }
         }
         return false;
