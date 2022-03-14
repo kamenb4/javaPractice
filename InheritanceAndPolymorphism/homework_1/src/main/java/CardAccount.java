@@ -1,6 +1,6 @@
 public class CardAccount extends BankAccount {
     @Override
-    public void take(double amountToTake) {
+    protected void take(double amountToTake) {
         super.take(amountToTake + amountToTake / 100.0);
     }
     // не забывайте, обращаться к методам и конструкторам родителя

@@ -8,14 +8,14 @@ public class DepositAccount extends BankAccount {
     private int periodBetween;
 
     @Override
-    public void put(double amountToPut) {
+    protected void put(double amountToPut) {
         super.put(amountToPut);
         this.lastIncome = LocalDate.now();
         this.periodBetween = 1;
     }
 
     @Override
-    public void take(double amountToTake) {
+    protected void take(double amountToTake) {
         boolean diff = ChronoUnit.MONTHS.between(lastIncome, LocalDate.now()) >= periodBetween;
         if (diff) super.take(amountToTake);
     }
