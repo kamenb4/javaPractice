@@ -2,55 +2,62 @@ import java.util.*;
 
 public class Company {
 
-    protected static int income = 0;
+    protected static double income;
 
-    List<Employee> staff = new ArrayList<>();
+    protected ArrayList<Employee> staff = new ArrayList<>();
 
     protected void hire(Employee staff) {
         this.staff.add(staff);
     }
 
-    protected void hireAll(Employee name, int number) {
-        if (number != 0) {
-            for (int i = 0; i < number; i++) {
+    protected void hireAll(Employee name, int count) {
+        if (count != 0) {
+            for (int i = 0; i < count; i++) {
                 hire(name);
             }
         } else System.out.println("Список пуст.");
     }
 
     protected void fire(Employee name) {
-        if (staff.contains(name)) staff.remove(name);
-        else System.out.println("Сотрудник не найден.");
+        staff.remove(name);
     }
 
-    protected int getIncome() {
+    protected void fireHalf() {
         for (int i = 0; i < staff.size(); i++) {
-            income += getStaffIncome();
+            staff.remove(staff.get(i));
         }
+    }
+
+    protected static double getIncome() {
         return income;
     }
 
-    protected int getStaffIncome() {
-        return (int) Math.abs(Math.random() * (140_000 - 115_000) + 115_000);
-    }
+   protected void setIncome(double revenue) {
+        income = revenue;
+   }
+    protected void getTopSalaryStaff(int count) {
+        Comparator<Employee> employeeComparator = (o1, o2) -> (int) (o1.getMonthSalary() - o2.getMonthSalary());
+        staff.sort(employeeComparator.reversed());
 
-    protected List<Employee> getTopSalaryStaff(int count) {
-        return getFilteredLimitedList(count, (o1, o2) -> (int) (o2.getMonthSalary() - o1.getMonthSalary()));
-    }
-
-    protected List<Employee> getLowestSalaryStaff(int count) {
-        return getFilteredLimitedList(count, (o1, o2) -> (int) (o1.getMonthSalary() - o2.getMonthSalary()));
-    }
-
-    private List<Employee> getFilteredLimitedList(int count, Comparator<Employee> comparator) {
-        List<Employee> copyList = new ArrayList<>(staff);
-        copyList.sort(comparator);
-        List<Employee> result = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            result.add(copyList.get(i));
+        if (count < staff.size()) {
+            for (int i = 0; i < count; i ++) {
+                String sallaryFormat = String.format("%.2f", staff.get(i).getMonthSalary());
+                System.out.println("* \t" + sallaryFormat + " руб");
+            }
         }
-        return result;
     }
+
+    protected void getLowestSalaryStaff(int count) {
+        staff.sort((o1, o2) -> (int) (o1.getMonthSalary() - o2.getMonthSalary()));
+
+        if (count < staff.size()) {
+            for (int i = 0; i < count; i++) {
+                String sallaryFormat =String.format("%.2f", staff.get(i).getMonthSalary());
+                System.out.println("* \t" + sallaryFormat + " руб");
+            }
+        }
+    }
+
 
 
 }

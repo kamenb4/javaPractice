@@ -1,12 +1,35 @@
 public class Operator implements Employee{
-    private static final int FIX_SALARY = 10000;
+
+    private double fixOperatorSalary = 50_000.0;
+    private double salary;
+
+    public Operator() {
+        getPosition();
+        seMonthSalary();
+    }
+
+    public Operator(double fixOperatorSalary) {
+        this.fixOperatorSalary = fixOperatorSalary;
+        getPosition();
+        seMonthSalary();
+
+    }
     @Override
     public double getMonthSalary() {
-        return FIX_SALARY;
+        return this.salary;
+    }
+
+    public void seMonthSalary() {
+        this.salary = fixOperatorSalary;
+    }
+
+    @Override
+    public String getPosition() {
+        return "Оператор";
     }
 
     @Override
     public String toString() {
-        return "Operator - " + getMonthSalary();
+        return getPosition() + " " + getMonthSalary();
     }
 }
